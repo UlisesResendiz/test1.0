@@ -53,4 +53,9 @@ public class RingBehaviour : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        a_Props.Velocity = 0;
+    }
 }
