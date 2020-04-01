@@ -119,6 +119,7 @@ public class BallPhysics : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         a_CanJump = false;
+
     }
 
     
