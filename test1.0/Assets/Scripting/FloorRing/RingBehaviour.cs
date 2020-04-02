@@ -19,6 +19,11 @@ public class RingBehaviour : MonoBehaviour
     float velocityScale = .000005f;
     Transform a_Transform;
 
+    GameObject floor;
+    GameObject[] floors;
+
+    Vector3 temp = new Vector3(0, 0, 0);
+
     [SerializeField]
     RingProps a_Props;
 
@@ -27,6 +32,7 @@ public class RingBehaviour : MonoBehaviour
     {
         a_Transform = GetComponent<Transform>();
         SetUp();
+        getAllFloor();
     }
 
     // Update is called once per frame
@@ -34,6 +40,7 @@ public class RingBehaviour : MonoBehaviour
     {
         Rotate();
         Scale();
+        updatefloor();
     }
 
     void SetUp()
@@ -75,7 +82,49 @@ public class RingBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        a_Props.Velocity = 0;
-        Destroy(this.gameObject);
+       
+        Vector3 scaleInit = temp;
+        //Instantiate(floor);
+        scaleInit.x -= .25f;
+        scaleInit.y -= .25f;
+        scaleInit.z -= .25f;
+        a_Transform.localScale = scaleInit;
+   
+        //floors = GameObject.FindGameObjectsWithTag("Floor");
+        //for (int i = 0; i < floors.Length; i++)
+        //{
+          //  Destroy(floors[i].gameObject);
+
+        //}
+        //Destroy(this.gameObject);
+    }
+
+    void getAllFloor()
+    {
+        floors = GameObject.FindGameObjectsWithTag("Floor");
+            
+    }
+
+    void updatefloor()
+    {
+              if (floors[2].gameObject.transform.localScale.x < floors[0].gameObject.transform.localScale.x && floors[2].gameObject.transform.localScale.x < floors[1].gameObject.transform.localScale.x)
+                {
+                temp = floors[2].gameObject.transform.localScale;
+                return;
+                 }
+
+                else if (floors[0].gameObject.transform.localScale.x < floors[1].gameObject.transform.localScale.x && floors[0].gameObject.transform.localScale.x < floors[2].gameObject.transform.localScale.x)
+                {
+                temp = floors[0].gameObject.transform.localScale;
+                return;
+                }
+
+                 else if (floors[1].gameObject.transform.localScale.x < floors[2].gameObject.transform.localScale.x && floors[1].gameObject.transform.localScale.x < floors[0].gameObject.transform.localScale.x)
+                {
+                temp = floors[1].gameObject.transform.localScale;
+                return;
+                } 
+
     }
 }
+
