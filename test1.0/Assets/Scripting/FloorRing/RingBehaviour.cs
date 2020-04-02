@@ -13,6 +13,10 @@ public class RingBehaviour : MonoBehaviour
 
     int a_Direction;
     float a_Timer;
+    float scaleX;
+    float scaleY;
+    float scaleZ;
+    float velocityScale = .000005f;
     Transform a_Transform;
 
     [SerializeField]
@@ -29,6 +33,7 @@ public class RingBehaviour : MonoBehaviour
     void Update()
     {
         Rotate();
+        Scale();
     }
 
     void SetUp()
@@ -52,6 +57,20 @@ public class RingBehaviour : MonoBehaviour
             a_Direction *= -1;
         }
 
+    }
+    void Scale()
+    {
+        Vector3 initialScale = a_Transform.localScale;
+
+        scaleX += velocityScale;
+        scaleY += velocityScale;
+        scaleZ += velocityScale;
+
+        initialScale.x += scaleX;
+        initialScale.y += scaleY;
+        initialScale.z += scaleZ;
+
+        a_Transform.localScale = initialScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -83,7 +83,8 @@ public class BallPhysics : MonoBehaviour
 
     public void Move(Vector3 Direction)
     {
-        transform.position = transform.position + Direction * a_BallProps.RotationVel * Time.deltaTime;
+        //Multiplique la RotationVel para que fuera mas rapido Recordatorio * //
+        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
     }
 
     void MobileMovement()
