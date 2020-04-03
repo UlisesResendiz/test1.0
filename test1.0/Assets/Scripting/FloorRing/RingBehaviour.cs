@@ -89,11 +89,17 @@ public class RingBehaviour : MonoBehaviour
         scaleInit.y -= .25f;
         scaleInit.z -= .25f;
         a_Transform.localScale = scaleInit;
-   
+
+        //Se agrega angulo aleatorio
+        var euler = transform.eulerAngles;
+        euler.z = Random.Range(0.0f, 360.0f);
+        transform.eulerAngles = euler;
+
+
         //floors = GameObject.FindGameObjectsWithTag("Floor");
         //for (int i = 0; i < floors.Length; i++)
         //{
-          //  Destroy(floors[i].gameObject);
+        //  Destroy(floors[i].gameObject);
 
         //}
         //Destroy(this.gameObject);
