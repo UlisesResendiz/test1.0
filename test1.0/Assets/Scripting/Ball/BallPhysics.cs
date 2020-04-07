@@ -20,6 +20,9 @@ public class BallPhysics : MonoBehaviour
     bool a_CanJump;
     int a_DirMov;
 
+    TextMesh textObject;
+    private int currentScore;
+
 
     private void Awake()
     {
@@ -29,12 +32,16 @@ public class BallPhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textObject = GameObject.Find("Score").GetComponent<TextMesh>();
+        currentScore = 0;
+        textObject.text = "Score: " + currentScore;
         a_rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        textObject.text = "Score: " + currentScore;
         KeyMapping();
         Rotation();
         MobileMovement();
@@ -123,5 +130,9 @@ public class BallPhysics : MonoBehaviour
 
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        currentScore++;
+    }
+
 }
