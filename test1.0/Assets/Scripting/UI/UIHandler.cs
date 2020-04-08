@@ -22,28 +22,39 @@ public class UIHandler : MonoBehaviour
 
     public void RedButton()
     {
-        BallPhysics.a_BallPhysics.SetMovDir(1);
+        if (BallPhysics.a_BallPhysics)
+        {
+            BallPhysics.a_BallPhysics.SetMovDir(1);
+        }
     }
 
     public void BlueButton()
     {
-        BallPhysics.a_BallPhysics.SetMovDir(-1);
+        if (BallPhysics.a_BallPhysics)
+        {
+            BallPhysics.a_BallPhysics.SetMovDir(-1);
+        }
     }
 
     public void ExitRedBlueButton()
     {
-        BallPhysics.a_BallPhysics.SetMovDir(0);
+        if (BallPhysics.a_BallPhysics)
+        {
+            BallPhysics.a_BallPhysics.SetMovDir(0);
+        }
     }
 
     public void JumpButton()
     {
-        BallPhysics.a_BallPhysics.Jump();
+        if (BallPhysics.a_BallPhysics)
+        {
+            BallPhysics.a_BallPhysics.Jump();
+        }
     }
 
     public void EnablePauseMode(bool Enable)
     {
         Time.timeScale = 0;
-
         if (Enable)
         {
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuEnter");
