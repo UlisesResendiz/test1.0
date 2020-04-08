@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
+
+    [SerializeField]
+    GameObject c_PauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +38,19 @@ public class UIHandler : MonoBehaviour
     public void JumpButton()
     {
         BallPhysics.a_BallPhysics.Jump();
+    }
+
+    public void EnablePauseMode(bool Enable)
+    {
+        Time.timeScale = 0;
+
+        if (Enable)
+        {
+            c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuEnter");
+        }
+        else
+        {
+            c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuExit");
+        }
     }
 }
