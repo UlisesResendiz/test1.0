@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallPhysics : MonoBehaviour
 {
@@ -20,10 +21,10 @@ public class BallPhysics : MonoBehaviour
     bool a_CanJump;
     int a_DirMov;
 
-    TextMesh textObject;
+    Text textObject;
     private int currentScore;
 
-    TextMesh textObjectHealth;
+    Text textObjectHealth;
     private int currentHealth;
 
     public GameObject floor;
@@ -38,15 +39,16 @@ public class BallPhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textObject = GameObject.Find("Score").GetComponent<TextMesh>();
+        textObject = GameObject.Find("TEXT_Score").GetComponent<Text>();
         currentScore = 0;
         textObject.text = "Score: " + currentScore;
 
-        textObjectHealth = GameObject.Find("Health").GetComponent<TextMesh>();
+        /*textObjectHealth = GameObject.Find("TEXT_Score").GetComponent<Text>();
+        
+        textObjectHealth.text = "Health: " + currentHealth;*/
         currentHealth = 3;
-        textObjectHealth.text = "Health: " + currentHealth;
 
-        rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
+        rg_script = GameObject.Find("FloorRing2").GetComponent<RingBehaviour>();
 
         a_rb = GetComponent<Rigidbody2D>();
     }
@@ -55,7 +57,7 @@ public class BallPhysics : MonoBehaviour
     void Update()
     {
         textObject.text = "Score: " + currentScore;
-        textObjectHealth.text = "Health: " + currentHealth;
+        //textObjectHealth.text = "Health: " + currentHealth;
         KeyMapping();
         Rotation();
         MobileMovement();
