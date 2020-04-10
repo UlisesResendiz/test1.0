@@ -16,13 +16,13 @@ public class RingBehaviour : MonoBehaviour
     float scaleX;
     float scaleY;
     float scaleZ;
-    float velocityScale = .000005f;
+    float velocityScale = .0000025f;
     Transform a_Transform;
 
     GameObject floor;
     GameObject[] floors;
 
-    Vector3 temp = new Vector3(0, 0, 0);
+    public Vector3 temp = new Vector3(0, 0, 0);
 
 
 

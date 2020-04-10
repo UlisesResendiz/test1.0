@@ -26,6 +26,10 @@ public class BallPhysics : MonoBehaviour
     TextMesh textObjectHealth;
     private int currentHealth;
 
+    public GameObject floor;
+    private RingBehaviour rg_script;
+    Vector3 temp = new Vector3(0, 0, 0);
+
     private void Awake()
     {
         a_BallPhysics = this;
@@ -42,6 +46,8 @@ public class BallPhysics : MonoBehaviour
         currentHealth = 3;
         textObjectHealth.text = "Health: " + currentHealth;
 
+        rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
+
         a_rb = GetComponent<Rigidbody2D>();
     }
 
@@ -53,6 +59,7 @@ public class BallPhysics : MonoBehaviour
         KeyMapping();
         Rotation();
         MobileMovement();
+        temp = rg_script.temp;
     }
 
     void SetUp()
@@ -98,8 +105,23 @@ public class BallPhysics : MonoBehaviour
 
     public void Move(Vector3 Direction)
     {
-        //Multiplique la RotationVel para que fuera mas rapido Recordatorio * //
-        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
+        //modificar para la velocidad segun la escala del aro
+        if (temp.x > -2f && temp.x < .5f)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
+        }
+        else if (temp.x > .5 && temp.x < 1.75f)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 5) * Time.deltaTime;
+        }
+        else if (temp.x > 1.75f && temp.x <2)
+        {   
+        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 7) * Time.deltaTime;
+        }
+        else if(temp.x > 2)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 9) * Time.deltaTime;
+        }
     }
 
     void MobileMovement()
