@@ -20,7 +20,7 @@ public class UIHandler : MonoBehaviour
         
     }
 
-    public void RedButton()
+    public void MoveRightButton()
     {
         if (BallPhysics.a_BallPhysics)
         {
@@ -28,7 +28,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void BlueButton()
+    public void MoveLeftButton()
     {
         if (BallPhysics.a_BallPhysics)
         {
@@ -36,7 +36,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void ExitRedBlueButton()
+    public void ExitLeftRightMov()
     {
         if (BallPhysics.a_BallPhysics)
         {

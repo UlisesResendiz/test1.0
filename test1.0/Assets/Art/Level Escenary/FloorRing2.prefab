@@ -182,7 +182,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
       propertyPath: m_Name
-      value: FloorRing
+      value: FloorRing2
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 80b06d55b55c3b642b54332a6816ce57,
+        type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b06d55b55c3b642b54332a6816ce57, type: 3}
