@@ -23,6 +23,8 @@ public class BallPhysics : MonoBehaviour
     TextMesh textObject;
     private int currentScore;
 
+    TextMesh textObjectHealth;
+    private int currentHealth;
 
     private void Awake()
     {
@@ -35,6 +37,11 @@ public class BallPhysics : MonoBehaviour
         textObject = GameObject.Find("Score").GetComponent<TextMesh>();
         currentScore = 0;
         textObject.text = "Score: " + currentScore;
+
+        textObjectHealth = GameObject.Find("Health").GetComponent<TextMesh>();
+        currentHealth = 3;
+        textObjectHealth.text = "Health: " + currentHealth;
+
         a_rb = GetComponent<Rigidbody2D>();
     }
 
@@ -42,6 +49,7 @@ public class BallPhysics : MonoBehaviour
     void Update()
     {
         textObject.text = "Score: " + currentScore;
+        textObjectHealth.text = "Health: " + currentHealth;
         KeyMapping();
         Rotation();
         MobileMovement();
@@ -132,7 +140,25 @@ public class BallPhysics : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        currentScore++;
+        if (collision.gameObject.tag == "Floor")
+        {
+            currentScore++;
+           
+        }
+        //Colision obstaculo
+        if (collision.gameObject.name == "obstacle")
+        {
+            if (currentHealth > 0)
+            {           
+                currentHealth--;
+                //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
+                Destroy(collision.gameObject);
+            }
+            else if (currentHealth == 0)
+            {
+                defeatGame dg = new defeatGame();
+                dg.Quit();
+            }
+        }
     }
-
 }

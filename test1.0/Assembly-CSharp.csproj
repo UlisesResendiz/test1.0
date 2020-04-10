@@ -57,10 +57,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripting\Ball\BallPhysics.cs" />
      <Compile Include="Assets\Scripting\Ball\BallRotation.cs" />
+     <Compile Include="Assets\Scripting\Defeat\defeatGame.cs" />
      <Compile Include="Assets\Scripting\FloorRing\RingBehaviour.cs" />
+     <Compile Include="Assets\Scripting\Obstacle\Obstacle.cs" />
      <Compile Include="Assets\Scripting\UI\UIHandler.cs" />
-     <Compile Include="Assets\Scripting\lostGame\lostGame.cs" />
-     <Compile Include="Assets\defeatGame.cs" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
