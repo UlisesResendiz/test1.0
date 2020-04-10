@@ -30,6 +30,8 @@ public class BallPhysics : MonoBehaviour
     private RingBehaviour rg_script;
     Vector3 temp = new Vector3(0, 0, 0);
 
+    
+
     private void Awake()
     {
         a_BallPhysics = this;
@@ -54,8 +56,8 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textObject.text = "Score: " + currentScore;
-        textObjectHealth.text = "Health: " + currentHealth;
+        //textObject.text = "Score: " + currentScore;
+       // textObjectHealth.text = "Health: " + currentHealth;
         KeyMapping();
         Rotation();
         MobileMovement();
@@ -173,6 +175,7 @@ public class BallPhysics : MonoBehaviour
             if (currentHealth > 0)
             {           
                 currentHealth--;
+                ActualizeScore();
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
             }
@@ -182,5 +185,14 @@ public class BallPhysics : MonoBehaviour
                 dg.Quit();
             }
         }
+    }
+
+    //Esta va en la de Ball Physics
+    [SerializeField]
+    UIHandler c_UI;   //Referencia al script del UI
+
+    public void ActualizeScore()
+    {
+        c_UI.ActualizeScoreText(currentHealth);
     }
 }

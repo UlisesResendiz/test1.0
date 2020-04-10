@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
-      value: FloorRing2 (1)
+      value: FloorRing
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
@@ -598,6 +598,8 @@ MonoBehaviour:
   a_BallProps:
     RotationVel: 5
     JumpForce: 5
+  floor: {fileID: 0}
+  c_UI: {fileID: 461741675}
 --- !u!50 &257632762
 Rigidbody2D:
   serializedVersion: 4
@@ -635,6 +637,18 @@ CircleCollider2D:
   m_Offset: {x: -0.00000020861626, y: -0.0038212538}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &313817599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3408569196494033401, guid: 96ea4c7686bc22741a8c38276955ef13,
+    type: 3}
+  m_PrefabInstance: {fileID: 3408569195644957325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &413227378
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +804,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441150130}
   m_CullTransparentMesh: 0
+--- !u!114 &461741675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3408569195525235151, guid: 96ea4c7686bc22741a8c38276955ef13,
+    type: 3}
+  m_PrefabInstance: {fileID: 3408569195644957325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7610fbb828301047853f6c058d3b639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &547194833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_PauseMenu: {fileID: 1578902007}
+  c_ScoreText: {fileID: 0}
 --- !u!114 &986714234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,7 +2034,7 @@ PrefabInstance:
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
-      value: FloorRing2 (2)
+      value: FloorRing
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
@@ -2496,7 +2523,7 @@ PrefabInstance:
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
-      value: FloorRing2
+      value: FloorRing
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
@@ -2672,5 +2699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Horizontal
       objectReference: {fileID: 0}
+    - target: {fileID: 3408569195525235151, guid: 96ea4c7686bc22741a8c38276955ef13,
+        type: 3}
+      propertyPath: c_ScoreText
+      value: 
+      objectReference: {fileID: 313817599}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ea4c7686bc22741a8c38276955ef13, type: 3}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class UIHandler : MonoBehaviour
@@ -7,6 +8,7 @@ public class UIHandler : MonoBehaviour
 
     [SerializeField]
     GameObject c_PauseMenu;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,22 @@ public class UIHandler : MonoBehaviour
         if (BallPhysics.a_BallPhysics)
         {
             BallPhysics.a_BallPhysics.Jump();
+        }
+    }
+
+    //Esta va en la de UIHandler
+    [SerializeField]
+    Text c_ScoreText;
+
+    public void ActualizeScoreText(int newScore)
+    {
+        if (c_ScoreText)
+        {
+            c_ScoreText.text = newScore.ToString();
+        }
+        else
+        {
+            Debug.LogError("El gameobject Score Text no ha sido asignado en el inspector");
         }
     }
 
