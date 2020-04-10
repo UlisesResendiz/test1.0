@@ -20,6 +20,15 @@ public class BallPhysics : MonoBehaviour
     bool a_CanJump;
     int a_DirMov;
 
+    TextMesh textObject;
+    private int currentScore;
+
+    TextMesh textObjectHealth;
+    private int currentHealth;
+
+    public GameObject floor;
+    private RingBehaviour rg_script;
+    Vector3 temp = new Vector3(0, 0, 0);
 
     private void Awake()
     {
@@ -29,15 +38,28 @@ public class BallPhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textObject = GameObject.Find("Score").GetComponent<TextMesh>();
+        currentScore = 0;
+        textObject.text = "Score: " + currentScore;
+
+        textObjectHealth = GameObject.Find("Health").GetComponent<TextMesh>();
+        currentHealth = 3;
+        textObjectHealth.text = "Health: " + currentHealth;
+
+        rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
+
         a_rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        textObject.text = "Score: " + currentScore;
+        textObjectHealth.text = "Health: " + currentHealth;
         KeyMapping();
         Rotation();
         MobileMovement();
+        temp = rg_script.temp;
     }
 
     void SetUp()
@@ -83,8 +105,23 @@ public class BallPhysics : MonoBehaviour
 
     public void Move(Vector3 Direction)
     {
-        //Multiplique la RotationVel para que fuera mas rapido Recordatorio * //
-        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
+        //modificar para la velocidad segun la escala del aro
+        if (temp.x > -2f && temp.x < .5f)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
+        }
+        else if (temp.x > .5 && temp.x < 1.75f)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 5) * Time.deltaTime;
+        }
+        else if (temp.x > 1.75f && temp.x <2)
+        {   
+        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 7) * Time.deltaTime;
+        }
+        else if(temp.x > 2)
+        {
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 9) * Time.deltaTime;
+        }
     }
 
     void MobileMovement()
@@ -123,5 +160,27 @@ public class BallPhysics : MonoBehaviour
 
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            currentScore++;
+           
+        }
+        //Colision obstaculo
+        if (collision.gameObject.name == "obstacle")
+        {
+            if (currentHealth > 0)
+            {           
+                currentHealth--;
+                //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
+                Destroy(collision.gameObject);
+            }
+            else if (currentHealth == 0)
+            {
+                defeatGame dg = new defeatGame();
+                dg.Quit();
+            }
+        }
+    }
 }

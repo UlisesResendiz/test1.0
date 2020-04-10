@@ -16,13 +16,15 @@ public class RingBehaviour : MonoBehaviour
     float scaleX;
     float scaleY;
     float scaleZ;
-    float velocityScale = .000005f;
+    float velocityScale = .0000025f;
     Transform a_Transform;
 
     GameObject floor;
     GameObject[] floors;
 
-    Vector3 temp = new Vector3(0, 0, 0);
+    public Vector3 temp = new Vector3(0, 0, 0);
+
+
 
     [SerializeField]
     RingProps a_Props;
@@ -33,6 +35,7 @@ public class RingBehaviour : MonoBehaviour
         a_Transform = GetComponent<Transform>();
         SetUp();
         getAllFloor();
+        createObstacles();
     }
 
     // Update is called once per frame
@@ -82,28 +85,31 @@ public class RingBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        Vector3 scaleInit = temp;
-        //Instantiate(floor);
-        scaleInit.x -= .25f;
-        scaleInit.y -= .25f;
-        scaleInit.z -= .25f;
-        a_Transform.localScale = scaleInit;
+        if (collision.gameObject.tag == "Player")
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            createObstacles();
+            Vector3 scaleInit = temp;
+            
+            //Instantiate(floor);
+            scaleInit.x -= .25f;
+            scaleInit.y -= .25f;
+            scaleInit.z -= .25f;
+            a_Transform.localScale = scaleInit;
 
-        //Se agrega angulo aleatorio
-        var euler = transform.eulerAngles;
-        euler.z = Random.Range(0.0f, 360.0f);
-        transform.eulerAngles = euler;
+            //Se agrega angulo aleatorio
+            var euler = transform.eulerAngles;
+            euler.z = Random.Range(0.0f, 360.0f);
+            transform.eulerAngles = euler;
+            
+        }
 
-
-        //floors = GameObject.FindGameObjectsWithTag("Floor");
-        //for (int i = 0; i < floors.Length; i++)
-        //{
-        //  Destroy(floors[i].gameObject);
-
-        //}
-        //Destroy(this.gameObject);
+      
     }
+
 
     void getAllFloor()
     {
@@ -129,8 +135,47 @@ public class RingBehaviour : MonoBehaviour
                 {
                 temp = floors[1].gameObject.transform.localScale;
                 return;
-                } 
+                }
 
+    }
+
+    void createObstacles()
+    {
+        EdgeCollider2D MyEdgeCollider2D;
+        int numObstacles = Random.Range(1, 3);
+        for(int i = 0; i<numObstacles; i++)
+        {
+            MyEdgeCollider2D = GetComponent<EdgeCollider2D>();
+            GameObject newChild = new GameObject("obstacle");
+            newChild.transform.parent = transform;
+
+            Vector2[] colliderpoints;
+            int numPoint = Random.Range(0, 42);
+            colliderpoints = MyEdgeCollider2D.points;
+            newChild.transform.localPosition = new Vector3(colliderpoints[numPoint].x, colliderpoints[numPoint].y, 0.0f);
+
+            newChild.transform.eulerAngles = new Vector3(
+            newChild.transform.eulerAngles.x,
+            newChild.transform.eulerAngles.y,
+            newChild.transform.eulerAngles.z + 30
+            );
+
+            Vector3 scaleChild = new Vector3(.75f,.75f,.75f);
+            newChild.transform.localScale = scaleChild;
+
+            MeshFilter meshfilter = newChild.AddComponent<MeshFilter>();
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            meshfilter.mesh = go.GetComponent<MeshFilter>().mesh;
+            meshfilter.gameObject.AddComponent<MeshRenderer>();
+            Destroy(go);
+
+            newChild.AddComponent<BoxCollider2D>();
+            newChild.AddComponent<MeshRenderer>();
+
+            newChild.GetComponent<BoxCollider2D>().isTrigger = true;
+            newChild.AddComponent<Obstacle>();
+        }
+    
     }
 }
 
