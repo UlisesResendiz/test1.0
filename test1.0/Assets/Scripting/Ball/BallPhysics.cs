@@ -20,10 +20,8 @@ public class BallPhysics : MonoBehaviour
     bool a_CanJump;
     int a_DirMov;
 
-    TextMesh textObject;
     private int currentScore;
 
-    TextMesh textObjectHealth;
     private int currentHealth;
 
     public GameObject floor;
@@ -40,13 +38,13 @@ public class BallPhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textObject = GameObject.Find("Score").GetComponent<TextMesh>();
-        currentScore = 0;
-        textObject.text = "Score: " + currentScore;
 
-        textObjectHealth = GameObject.Find("Health").GetComponent<TextMesh>();
-        currentHealth = 3;
-        textObjectHealth.text = "Health: " + currentHealth;
+        currentScore = 0;
+
+        currentHealth = 2;
+        ActualizeScore();
+        ActualizeHealth();
+
 
         rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
 
@@ -56,8 +54,7 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //textObject.text = "Score: " + currentScore;
-       // textObjectHealth.text = "Health: " + currentHealth;
+
         KeyMapping();
         Rotation();
         MobileMovement();
@@ -112,17 +109,17 @@ public class BallPhysics : MonoBehaviour
         {
             transform.position = transform.position + Direction * (a_BallProps.RotationVel * 2) * Time.deltaTime;
         }
-        else if (temp.x > .5 && temp.x < 1.75f)
+        else if (temp.x > .5 && temp.x < 1.25f)
         {
-            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 5) * Time.deltaTime;
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 3) * Time.deltaTime;
         }
-        else if (temp.x > 1.75f && temp.x <2)
+        else if (temp.x > 1.25f && temp.x <2)
         {   
-        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 7) * Time.deltaTime;
+        transform.position = transform.position + Direction * (a_BallProps.RotationVel * 5) * Time.deltaTime;
         }
         else if(temp.x > 2)
         {
-            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 9) * Time.deltaTime;
+            transform.position = transform.position + Direction * (a_BallProps.RotationVel * 7) * Time.deltaTime;
         }
     }
 
@@ -167,7 +164,7 @@ public class BallPhysics : MonoBehaviour
         if (collision.gameObject.tag == "Floor")
         {
             currentScore++;
-           
+            ActualizeScore();
         }
         //Colision obstaculo
         if (collision.gameObject.name == "obstacle")
@@ -175,12 +172,13 @@ public class BallPhysics : MonoBehaviour
             if (currentHealth > 0)
             {           
                 currentHealth--;
-                ActualizeScore();
+                ActualizeHealth();
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
             }
             else if (currentHealth == 0)
             {
+                ActualizeHealth();
                 defeatGame dg = new defeatGame();
                 dg.Quit();
             }
@@ -193,6 +191,10 @@ public class BallPhysics : MonoBehaviour
 
     public void ActualizeScore()
     {
-        c_UI.ActualizeScoreText(currentHealth);
+        c_UI.ActualizeScoreText(currentScore);
+    }
+    public void ActualizeHealth()
+    {
+        c_UI.ActualizeHealthText(currentHealth);
     }
 }

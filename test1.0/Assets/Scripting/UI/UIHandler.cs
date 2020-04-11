@@ -57,6 +57,8 @@ public class UIHandler : MonoBehaviour
     //Esta va en la de UIHandler
     [SerializeField]
     Text c_ScoreText;
+    [SerializeField]
+    Text c_HealthText;
 
     public void ActualizeScoreText(int newScore)
     {
@@ -80,6 +82,19 @@ public class UIHandler : MonoBehaviour
         else
         {
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuExit");
+        }
+    }
+
+
+    public void ActualizeHealthText(int newHealth)
+    {
+        if (c_HealthText)
+        {
+            c_HealthText.text = newHealth.ToString();
+        }
+        else
+        {
+            Debug.LogError("El gameobject Health Text no ha sido asignado en el inspector");
         }
     }
 }

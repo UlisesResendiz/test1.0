@@ -16,7 +16,7 @@ public class RingBehaviour : MonoBehaviour
     float scaleX;
     float scaleY;
     float scaleZ;
-    float velocityScale = .0000025f;
+    float velocityScale = .00000025f;
     Transform a_Transform;
 
     GameObject floor;
