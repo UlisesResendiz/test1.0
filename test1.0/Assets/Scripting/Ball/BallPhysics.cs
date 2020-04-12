@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AudioSource))]
 public class BallPhysics : MonoBehaviour
 {
     public static BallPhysics a_BallPhysics;
 
     Rigidbody2D a_rb;
+    AudioSource a_AudioSource;
 
     [System.Serializable]
     public struct BallProps
@@ -27,8 +31,15 @@ public class BallPhysics : MonoBehaviour
     public GameObject floor;
     private RingBehaviour rg_script;
     Vector3 temp = new Vector3(0, 0, 0);
-
     
+    [SerializeField]
+    UIHandler c_UI;   //Referencia al script del UI
+
+    [Header("Audio")]
+    [SerializeField]
+    AudioClip Audio_ObstacleHit;
+    [SerializeField]
+    AudioClip Audio_RingCrossed;
 
     private void Awake()
     {
@@ -49,6 +60,7 @@ public class BallPhysics : MonoBehaviour
         rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
 
         a_rb = GetComponent<Rigidbody2D>();
+        a_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -165,6 +177,7 @@ public class BallPhysics : MonoBehaviour
         {
             currentScore++;
             ActualizeScore();
+            PlayAudio(Audio_RingCrossed);
         }
         //Colision obstaculo
         if (collision.gameObject.name == "obstacle")
@@ -175,20 +188,18 @@ public class BallPhysics : MonoBehaviour
                 ActualizeHealth();
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
+                PlayAudio(Audio_ObstacleHit);
             }
             else if (currentHealth == 0)
             {
                 ActualizeHealth();
                 defeatGame dg = new defeatGame();
-                dg.Quit();
+                //dg.Quit();
+                c_UI.Lose(currentScore);
             }
         }
     }
-
-    //Esta va en la de Ball Physics
-    [SerializeField]
-    UIHandler c_UI;   //Referencia al script del UI
-
+    
     public void ActualizeScore()
     {
         c_UI.ActualizeScoreText(currentScore);
@@ -196,5 +207,10 @@ public class BallPhysics : MonoBehaviour
     public void ActualizeHealth()
     {
         c_UI.ActualizeHealthText(currentHealth);
+    }
+
+    void PlayAudio(AudioClip clip)
+    {
+        a_AudioSource.PlayOneShot(clip);
     }
 }

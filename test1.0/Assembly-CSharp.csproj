@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripting\Ball\BallRotation.cs" />
     <Compile Include="Assets\Scripting\Defeat\defeatGame.cs" />
     <Compile Include="Assets\Scripting\FloorRing\RingBehaviour.cs" />
+    <Compile Include="Assets\Scripting\LevelHandler\LevelHandler.cs" />
     <Compile Include="Assets\Scripting\Obstacle\Obstacle.cs" />
     <Compile Include="Assets\Scripting\UI\UIHandler.cs" />
     <Reference Include="Unity.Timeline.Editor">

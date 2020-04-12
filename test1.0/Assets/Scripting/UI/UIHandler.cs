@@ -11,6 +11,10 @@ public class UIHandler : MonoBehaviour
     GameObject c_PauseMenu;
     [SerializeField]
     GameObject c_TransitionPanel;
+    [SerializeField]
+    GameObject c_LosePanel;
+    [SerializeField]
+    Text c_LosePanelScore;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +65,20 @@ public class UIHandler : MonoBehaviour
         StartCoroutine(ChangeScene(SceneName));
     }
 
+    public void Lose(int Score)
+    {
+        Time.timeScale = 0;
+        c_LosePanelScore.text = Score.ToString();
+        c_LosePanel.GetComponent<Animator>().Play("Anim_LoseImageEnter");
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+
     //Esta va en la de UIHandler
     [SerializeField]
     Text c_ScoreText;
@@ -81,15 +99,15 @@ public class UIHandler : MonoBehaviour
 
     public void EnablePauseMode(bool Enable)
     {
-        
-        Time.timeScale = 0;
         if (Enable)
         {
+            Time.timeScale = 0;
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuEnter");
         }
         else
         {
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuExit");
+            Time.timeScale = 1;
         }
 
         
@@ -132,4 +150,5 @@ public class UIHandler : MonoBehaviour
         Scene scene = SceneManager.GetSceneByName(SceneName);
         SceneManager.LoadScene(SceneName);
     }
+    
 }
