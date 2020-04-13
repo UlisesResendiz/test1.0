@@ -68,6 +68,7 @@ public class UIHandler : MonoBehaviour
     public void Lose(int Score)
     {
         Time.timeScale = 0;
+        PlayLoseTheme();
         c_LosePanelScore.text = Score.ToString();
         c_LosePanel.GetComponent<Animator>().Play("Anim_LoseImageEnter");
     }
@@ -150,5 +151,18 @@ public class UIHandler : MonoBehaviour
         Scene scene = SceneManager.GetSceneByName(SceneName);
         SceneManager.LoadScene(SceneName);
     }
-    
+
+
+    [Header("Audio")]
+    [SerializeField]
+    AudioClip Audio_IntroLose;
+    [SerializeField]
+    AudioClip Audio_ThemeLose;
+
+    void PlayLoseTheme()
+    {
+        AudioPlayer audplayer = AudioPlayer.GetAudioPlayer();
+
+        audplayer.ProgresiveAudioChange(Audio_IntroLose, Audio_ThemeLose);
+    }
 }

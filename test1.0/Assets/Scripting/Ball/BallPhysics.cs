@@ -40,6 +40,8 @@ public class BallPhysics : MonoBehaviour
     AudioClip Audio_ObstacleHit;
     [SerializeField]
     AudioClip Audio_RingCrossed;
+    [SerializeField]
+    AudioClip Audio_Jump;
 
     private void Awake()
     {
@@ -157,6 +159,7 @@ public class BallPhysics : MonoBehaviour
         if (a_CanJump)
         {
             a_rb.AddForce(transform.up * a_BallProps.JumpForce, ForceMode2D.Impulse);
+            PlayAudio(Audio_Jump);
         }
     }
 

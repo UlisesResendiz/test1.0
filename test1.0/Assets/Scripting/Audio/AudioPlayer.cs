@@ -26,11 +26,13 @@ public class AudioPlayer : MonoBehaviour
     }
 
     AudioSource a_AudioSource;
+    AudioClip a_ThemeAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         SetUp();
+        PlayTheme();
     }
 
     void SetUp()
@@ -47,5 +49,37 @@ public class AudioPlayer : MonoBehaviour
     public void PlayAudioClipOneShoot(AudioClip clip)
     {
         a_AudioSource.PlayOneShot(clip);
+    }
+
+    public void GetThemeClip(AudioClip clip)
+    {
+        a_ThemeAudio = clip;
+    }
+
+    void PlayTheme()
+    {
+        a_AudioSource.clip = a_ThemeAudio;
+        a_AudioSource.Play();
+    }
+
+    public void ProgresiveAudioChange(AudioClip clip1, AudioClip clip2)
+    {
+        a_AudioSource.loop = false;
+        a_AudioSource.clip = clip1;
+        a_AudioSource.Play();
+        StartCoroutine(Transitionto2ndClip(clip2));
+    }
+
+    IEnumerator Transitionto2ndClip(AudioClip clip2)
+    {
+
+        while (a_AudioSource.isPlaying)
+        {
+            yield return new WaitForSecondsRealtime(.01f);
+        }
+        a_AudioSource.loop = true;
+        a_AudioSource.clip = clip2;
+        a_AudioSource.Play();
+
     }
 }
