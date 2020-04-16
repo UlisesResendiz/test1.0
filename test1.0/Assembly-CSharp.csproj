@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+
      <Compile Include="Assets\Scripting\Ball\BallPhysics.cs" />
      <Compile Include="Assets\Scripting\Ball\BallRotation.cs" />
      <Compile Include="Assets\Scripting\Defeat\defeatGame.cs" />
@@ -662,6 +663,7 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.3f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
