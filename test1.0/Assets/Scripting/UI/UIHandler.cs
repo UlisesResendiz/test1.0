@@ -15,11 +15,13 @@ public class UIHandler : MonoBehaviour
     GameObject c_LosePanel;
     [SerializeField]
     Text c_LosePanelScore;
+    [SerializeField]
+    Text c_HighScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        c_HighScoreText.text = PlayerPrefs.GetInt("Highscore1", 0).ToString();
     }
 
     // Update is called once per frame
@@ -70,6 +72,7 @@ public class UIHandler : MonoBehaviour
         Time.timeScale = 0;
         PlayLoseTheme();
         c_LosePanelScore.text = Score.ToString();
+        saveScores(Score);
         c_LosePanel.GetComponent<Animator>().Play("Anim_LoseImageEnter");
     }
 
@@ -164,5 +167,50 @@ public class UIHandler : MonoBehaviour
         AudioPlayer audplayer = AudioPlayer.GetAudioPlayer();
 
         audplayer.ProgresiveAudioChange(Audio_IntroLose, Audio_ThemeLose);
+    }
+    void saveScores(int Score)
+    {
+        if (Score > PlayerPrefs.GetInt("Highscore1", 0))
+        {
+            int aux1 = PlayerPrefs.GetInt("Highscore1", 0);
+            int aux2 = PlayerPrefs.GetInt("Highscore2", 0);
+            int aux3 = PlayerPrefs.GetInt("Highscore3", 0);
+            int aux4 = PlayerPrefs.GetInt("Highscore4", 0);
+            PlayerPrefs.SetInt("Highscore1", Score);
+            c_HighScoreText.text = Score.ToString();
+            PlayerPrefs.SetInt("Highscore2", aux1);
+            PlayerPrefs.SetInt("Highscore3", aux2);
+            PlayerPrefs.SetInt("Highscore4", aux3);
+            PlayerPrefs.SetInt("Highscore5", aux4);
+        }
+        else if (Score > PlayerPrefs.GetInt("Highscore2", 0))
+        {
+            int aux2 = PlayerPrefs.GetInt("Highscore2", 0);
+            int aux3 = PlayerPrefs.GetInt("Highscore3", 0);
+            int aux4 = PlayerPrefs.GetInt("Highscore4", 0);
+            PlayerPrefs.SetInt("Highscore2", Score);
+
+            PlayerPrefs.SetInt("Highscore3", aux2);
+            PlayerPrefs.SetInt("Highscore4", aux3);
+            PlayerPrefs.SetInt("Highscore5", aux4);
+        }
+        else if (Score > PlayerPrefs.GetInt("Highscore3", 0))
+        {
+            int aux3 = PlayerPrefs.GetInt("Highscore3", 0);
+            int aux4 = PlayerPrefs.GetInt("Highscore4", 0);
+            PlayerPrefs.SetInt("Highscore3", Score);
+            PlayerPrefs.SetInt("Highscore4", aux3);
+            PlayerPrefs.SetInt("Highscore5", aux4);
+        }
+        else if (Score > PlayerPrefs.GetInt("Highscore4", 0))
+        {
+            int aux4 = PlayerPrefs.GetInt("Highscore4", 0);
+            PlayerPrefs.SetInt("Highscore4", Score);
+            PlayerPrefs.SetInt("Highscore5", aux4);
+        }
+        else if (Score > PlayerPrefs.GetInt("Highscore5", 0))
+        {
+            PlayerPrefs.SetInt("Highscore5", Score);
+        }
     }
 }

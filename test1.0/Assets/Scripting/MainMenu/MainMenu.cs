@@ -2,9 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    Text table_score1;
+    [SerializeField]
+    Text table_score2;
+    [SerializeField]
+    Text table_score3;
+    [SerializeField]
+    Text table_score4;
+    [SerializeField]
+    Text table_score5;
+
+   void Start()
+    {
+        table_score1.text = PlayerPrefs.GetInt("Highscore1", 0).ToString();
+        table_score2.text = PlayerPrefs.GetInt("Highscore2", 0).ToString();
+        table_score3.text = PlayerPrefs.GetInt("Highscore3", 0).ToString();
+        table_score4.text = PlayerPrefs.GetInt("Highscore4", 0).ToString();
+        table_score5.text = PlayerPrefs.GetInt("Highscore5", 0).ToString();
+    }
+
    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

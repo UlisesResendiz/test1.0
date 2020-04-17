@@ -516,6 +516,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249593406}
   m_CullTransparentMesh: 0
+--- !u!114 &255004883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 735487921, guid: 96ea4c7686bc22741a8c38276955ef13,
+    type: 3}
+  m_PrefabInstance: {fileID: 3408569195644957325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &413227378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,6 +1376,7 @@ MonoBehaviour:
   c_TransitionPanel: {fileID: 0}
   c_LosePanel: {fileID: 0}
   c_LosePanelScore: {fileID: 0}
+  c_HighScoreText: {fileID: 0}
   c_ScoreText: {fileID: 0}
   c_HealthText: {fileID: 0}
   Audio_IntroLose: {fileID: 0}
@@ -2908,6 +2921,11 @@ PrefabInstance:
       propertyPath: Audio_ThemeLose
       value: 
       objectReference: {fileID: 8300000, guid: 50cb1dc5b4a556b42a2503c26d58fc55, type: 3}
+    - target: {fileID: 3408569195525235151, guid: 96ea4c7686bc22741a8c38276955ef13,
+        type: 3}
+      propertyPath: c_HighScoreText
+      value: 
+      objectReference: {fileID: 255004883}
     - target: {fileID: 3408569196093174345, guid: 96ea4c7686bc22741a8c38276955ef13,
         type: 3}
       propertyPath: m_AnchoredPosition.x
