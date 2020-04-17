@@ -108,7 +108,7 @@ public class UIHandler : MonoBehaviour
         else
         {
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuExit");
-            Time.timeScale = 1;
+            StartCoroutine(ResumeTimer(1));
         }
 
         
@@ -164,5 +164,11 @@ public class UIHandler : MonoBehaviour
         AudioPlayer audplayer = AudioPlayer.GetAudioPlayer();
 
         audplayer.ProgresiveAudioChange(Audio_IntroLose, Audio_ThemeLose);
+    }
+
+    IEnumerator ResumeTimer(float Duration)
+    {
+        yield return new WaitForSecondsRealtime(Duration);
+        Time.timeScale = 1;
     }
 }

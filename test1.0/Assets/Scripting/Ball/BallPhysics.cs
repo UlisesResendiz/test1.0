@@ -73,6 +73,7 @@ public class BallPhysics : MonoBehaviour
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
+        ScalingBall();
     }
 
     void SetUp()
@@ -158,10 +159,35 @@ public class BallPhysics : MonoBehaviour
     {
         if (a_CanJump)
         {
-            a_rb.AddForce(transform.up * a_BallProps.JumpForce, ForceMode2D.Impulse);
+            float DisttoOrigin = Vector3.Distance(Vector3.zero, transform.position);
+
+            float newforce = DisttoOrigin * 2;
+
+            a_rb.AddForce(transform.up * newforce, ForceMode2D.Impulse);
             PlayAudio(Audio_Jump);
         }
     }
+
+    void ScalingBall()
+    {
+        //Calcula la distancia de vector(0,0,0) a la distancia que tiene la pelota
+        //Mientras mas distancia mas grande la escala de la pelota o al contrario
+        //La escala maxima sera 1.5
+
+
+        float DisttoOrigin = Vector3.Distance(Vector3.zero, transform.position);
+
+        Debug.Log(DisttoOrigin);
+
+        float newscale = DisttoOrigin / 13;
+
+        if (newscale < 1.5f)
+        {
+            transform.localScale = new Vector3(newscale, newscale, 1);
+        }
+    }
+
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

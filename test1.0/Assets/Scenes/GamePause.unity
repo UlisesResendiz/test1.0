@@ -292,12 +292,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059616386, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: a_Props.Velocity
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
       value: FloorRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
@@ -1894,12 +1899,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059616386, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: a_Props.Velocity
-      value: 0.4
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
       value: FloorRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
@@ -2010,7 +2020,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2702,12 +2712,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059616386, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: a_Props.Velocity
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
       value: FloorRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2658177526623939268, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
