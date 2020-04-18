@@ -43,11 +43,11 @@ public class AudioPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void PlayAudioClipOneShoot(AudioClip clip)
     {
+
         a_AudioSource.PlayOneShot(clip);
     }
 
@@ -59,11 +59,13 @@ public class AudioPlayer : MonoBehaviour
     void PlayTheme()
     {
         a_AudioSource.clip = a_ThemeAudio;
+        a_AudioSource.volume = PlayerPrefs.GetFloat("volumen", 0.0f);
         a_AudioSource.Play();
     }
 
     public void ProgresiveAudioChange(AudioClip clip1, AudioClip clip2)
     {
+        a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
         a_AudioSource.loop = false;
         a_AudioSource.clip = clip1;
         a_AudioSource.Play();

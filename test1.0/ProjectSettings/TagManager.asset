@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Ball
+  - Audio
   layers:
   - Default
   - TransparentFX
