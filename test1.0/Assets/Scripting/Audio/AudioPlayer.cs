@@ -65,7 +65,6 @@ public class AudioPlayer : MonoBehaviour
 
     public void ProgresiveAudioChange(AudioClip clip1, AudioClip clip2)
     {
-        a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
         a_AudioSource.loop = false;
         a_AudioSource.clip = clip1;
         a_AudioSource.Play();

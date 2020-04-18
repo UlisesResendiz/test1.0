@@ -214,6 +214,7 @@ public class BallPhysics : MonoBehaviour
 
     void PlayAudio(AudioClip clip)
     {
+        a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
         a_AudioSource.PlayOneShot(clip);
     }
 }
