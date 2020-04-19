@@ -110,11 +110,15 @@ public class RingBehaviour : MonoBehaviour
 
             //Se agrega angulo aleatorio
             var euler = transform.eulerAngles;
-            euler.z = Random.Range(0.0f, 360.0f);
+            do
+            {
+                euler.z = Random.Range(0.0f, 360.0f);
+            }
+            while (euler.z > transform.eulerAngles.z - 5 && euler.z < transform.transform.eulerAngles.z + 5);
+
             transform.eulerAngles = euler;
             
         }
-
     }
 
 
