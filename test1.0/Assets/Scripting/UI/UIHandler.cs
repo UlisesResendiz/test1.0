@@ -111,7 +111,7 @@ public class UIHandler : MonoBehaviour
         else
         {
             c_PauseMenu.GetComponent<Animator>().Play("Anim_PauseMenuExit");
-            Time.timeScale = 1;
+            StartCoroutine(ResumeTimer(1));
         }
 
         
@@ -212,5 +212,10 @@ public class UIHandler : MonoBehaviour
         {
             PlayerPrefs.SetInt("Highscore5", Score);
         }
+
+    IEnumerator ResumeTimer(float Duration)
+    {
+        yield return new WaitForSecondsRealtime(Duration);
+        Time.timeScale = 1;
     }
 }

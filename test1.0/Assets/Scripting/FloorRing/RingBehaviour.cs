@@ -54,33 +54,37 @@ public class RingBehaviour : MonoBehaviour
 
     void Rotate()
     {
-
-        if (a_Timer > 0)
+        if (Time.timeScale != 0)
         {
-            a_Timer -= Time.deltaTime;
-            transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + a_Direction * a_Props.Velocity);
-            a_Timer -= Time.deltaTime;
+            if (a_Timer > 0)
+            {
+                a_Timer -= Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + a_Direction * a_Props.Velocity);
+                a_Timer -= Time.deltaTime;
+            }
+            else
+            {
+                a_Timer = a_Props.TimerDirection;
+                a_Direction *= -1;
+            }
         }
-        else
-        {
-            a_Timer = a_Props.TimerDirection;
-            a_Direction *= -1;
-        }
-
     }
     void Scale()
     {
-        Vector3 initialScale = a_Transform.localScale;
+        if (Time.timeScale != 0)
+        {
+            Vector3 initialScale = a_Transform.localScale;
 
-        scaleX += velocityScale;
-        scaleY += velocityScale;
-        scaleZ += velocityScale;
+            scaleX += velocityScale;
+            scaleY += velocityScale;
+            scaleZ += velocityScale;
 
-        initialScale.x += scaleX;
-        initialScale.y += scaleY;
-        initialScale.z += scaleZ;
+            initialScale.x += scaleX;
+            initialScale.y += scaleY;
+            initialScale.z += scaleZ;
 
-        a_Transform.localScale = initialScale;
+            a_Transform.localScale = initialScale;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,22 +96,29 @@ public class RingBehaviour : MonoBehaviour
                 Destroy(child.gameObject);
             }
             createObstacles();
-            Vector3 scaleInit = temp;
             
+            Vector3 scaleInit = temp;
+
             //Instantiate(floor);
-            scaleInit.x -= .25f;
-            scaleInit.y -= .25f;
-            scaleInit.z -= .25f;
-            a_Transform.localScale = scaleInit;
+            if (scaleInit.x > .25f)
+            {
+                scaleInit.x -= .25f;
+                scaleInit.y -= .25f;
+                scaleInit.z -= .25f;
+                a_Transform.localScale = scaleInit;
+            }
 
             //Se agrega angulo aleatorio
             var euler = transform.eulerAngles;
-            euler.z = Random.Range(0.0f, 360.0f);
+            do
+            {
+                euler.z = Random.Range(0.0f, 360.0f);
+            }
+            while (euler.z > transform.eulerAngles.z - 5 && euler.z < transform.transform.eulerAngles.z + 5);
+
             transform.eulerAngles = euler;
             
         }
-
-      
     }
 
 
