@@ -27,7 +27,7 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void MoveRightButton()
@@ -114,7 +114,7 @@ public class UIHandler : MonoBehaviour
             StartCoroutine(ResumeTimer(1));
         }
 
-        
+
     }
 
 
@@ -141,7 +141,8 @@ public class UIHandler : MonoBehaviour
         if (c_TransitionPanel)
         {
             c_TransitionPanel.GetComponent<Animator>().Play("Anim_TransitionImageEnter");
-        }else
+        }
+        else
         {
             Debug.LogError("El gameobject Transition Panel no ha sido asignado en el inspector");
         }
@@ -212,10 +213,11 @@ public class UIHandler : MonoBehaviour
         {
             PlayerPrefs.SetInt("Highscore5", Score);
         }
+    }
 
     IEnumerator ResumeTimer(float Duration)
-    {
-        yield return new WaitForSecondsRealtime(Duration);
-        Time.timeScale = 1;
-    }
+        {
+            yield return new WaitForSecondsRealtime(Duration);
+            Time.timeScale = 1;
+        }
 }
