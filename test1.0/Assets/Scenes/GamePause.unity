@@ -2760,6 +2760,14 @@ PrefabInstance:
       propertyPath: a_Props.Velocity
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059616391, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1349082868404345047, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_Name
