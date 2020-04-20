@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour
 
         while(async.isDone == false)
         {
-            slider.value = async.progress * .01f;
+            slider.value = async.progress;
             if(async.progress == 0.9f)
             {
                 slider.value = 1f;
