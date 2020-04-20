@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripting\Defeat\defeatGame.cs" />
      <Compile Include="Assets\Scripting\FloorRing\RingBehaviour.cs" />
      <Compile Include="Assets\Scripting\LevelHandler\LevelHandler.cs" />
+     <Compile Include="Assets\Scripting\LoadingScreen\LoadingScreenControl.cs" />
      <Compile Include="Assets\Scripting\MainMenu\MainMenu.cs" />
      <Compile Include="Assets\Scripting\MainMenu\SettingsMenu.cs" />
      <Compile Include="Assets\Scripting\Obstacle\Obstacle.cs" />
