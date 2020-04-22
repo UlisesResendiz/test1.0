@@ -1480,6 +1480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1294592850737438584, guid: 9acea5ebc01cc99429f630db8e01cc2b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4580405474971867575, guid: 9acea5ebc01cc99429f630db8e01cc2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1560,6 +1565,11 @@ PrefabInstance:
       propertyPath: particleSystem
       value: 
       objectReference: {fileID: 1992685541}
+    - target: {fileID: 8857008493696807587, guid: 9acea5ebc01cc99429f630db8e01cc2b,
+        type: 3}
+      propertyPath: meshrender
+      value: 
+      objectReference: {fileID: 1992685537}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9acea5ebc01cc99429f630db8e01cc2b, type: 3}
 --- !u!1 &1098443250
@@ -7412,6 +7422,12 @@ CanvasRenderer:
 --- !u!1 &1992685533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 705806587253828516, guid: 9acea5ebc01cc99429f630db8e01cc2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 991014650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1992685537 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1294592850737438584, guid: 9acea5ebc01cc99429f630db8e01cc2b,
     type: 3}
   m_PrefabInstance: {fileID: 991014650}
   m_PrefabAsset: {fileID: 0}

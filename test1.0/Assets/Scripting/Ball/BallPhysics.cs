@@ -43,11 +43,10 @@ public class BallPhysics : MonoBehaviour
     [SerializeField]
     AudioClip Audio_Jump;
 
-    float timeLeft = 15.0f;
-    bool lose = false;
+    [Header("Lose Effect")]
     public ParticleSystem particleSystem;
-    private bool isPlaying = false;
-
+    public MeshRenderer meshrender;
+    
     private void Awake()
     {
         a_BallPhysics = this;
@@ -77,7 +76,7 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
@@ -86,12 +85,14 @@ public class BallPhysics : MonoBehaviour
         if (gameObject.GetComponent<ParticleSystem>().isStopped)
         {
             c_UI.Lose(currentScore);
+            particleSystem.Clear();
+            particleSystem.Pause();
         }
+
         if (!gameObject.GetComponent<ParticleSystem>().isPlaying)
         {
             KeyMapping();
         }
-    
 
 
     }
@@ -245,10 +246,8 @@ public class BallPhysics : MonoBehaviour
             {
 
                 particleSystem.Play();
-                lose = true;
                 ActualizeHealth();
-                  
-               
+                meshrender.enabled = false;
                     //defeatGame dg = new defeatGame();
                     //dg.Quit();
                     
@@ -267,6 +266,7 @@ public class BallPhysics : MonoBehaviour
     {
         c_UI.ActualizeHealthText(currentHealth);
     }
+
 
     void PlayAudio(AudioClip clip)
     {

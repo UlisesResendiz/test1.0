@@ -21,6 +21,7 @@ public class UIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         c_HighScoreText.text = PlayerPrefs.GetInt("Highscore1", 0).ToString();
     }
 
@@ -74,7 +75,7 @@ public class UIHandler : MonoBehaviour
         c_LosePanelScore.text = Score.ToString();
         saveScores(Score);
         c_LosePanel.GetComponent<Animator>().Play("Anim_LoseImageEnter");
-    }
+}
 
     public void Retry()
     {
