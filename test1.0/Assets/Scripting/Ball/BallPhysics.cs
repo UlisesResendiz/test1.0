@@ -31,7 +31,7 @@ public class BallPhysics : MonoBehaviour
     public GameObject floor;
     private RingBehaviour rg_script;
     Vector3 temp = new Vector3(0, 0, 0);
-    
+  
     [SerializeField]
     UIHandler c_UI;   //Referencia al script del UI
 
@@ -42,6 +42,11 @@ public class BallPhysics : MonoBehaviour
     AudioClip Audio_RingCrossed;
     [SerializeField]
     AudioClip Audio_Jump;
+
+    float timeLeft = 15.0f;
+    bool lose = false;
+    public ParticleSystem particleSystem;
+    private bool isPlaying = false;
 
     private void Awake()
     {
@@ -63,17 +68,32 @@ public class BallPhysics : MonoBehaviour
 
         a_rb = GetComponent<Rigidbody2D>();
         a_AudioSource = GetComponent<AudioSource>();
+
+        particleSystem = GetComponent<ParticleSystem>();
+        particleSystem.Clear();
+        particleSystem.Pause();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        KeyMapping();
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
         ScalingBall();
+
+        if (gameObject.GetComponent<ParticleSystem>().isStopped)
+        {
+            c_UI.Lose(currentScore);
+        }
+        if (!gameObject.GetComponent<ParticleSystem>().isPlaying)
+        {
+            KeyMapping();
+        }
+    
+
+
     }
 
     void SetUp()
@@ -164,7 +184,9 @@ public class BallPhysics : MonoBehaviour
             float newforce = DisttoOrigin * 2;
 
             a_rb.AddForce(transform.up * newforce, ForceMode2D.Impulse);
+          
             PlayAudio(Audio_Jump);
+           
         }
     }
 
@@ -177,7 +199,7 @@ public class BallPhysics : MonoBehaviour
 
         float DisttoOrigin = Vector3.Distance(Vector3.zero, transform.position);
 
-        Debug.Log(DisttoOrigin);
+        //Debug.Log(DisttoOrigin);
 
         float newscale = DisttoOrigin / 13;
 
@@ -221,10 +243,18 @@ public class BallPhysics : MonoBehaviour
             }
             else if (currentHealth == 0)
             {
+
+                particleSystem.Play();
+                lose = true;
                 ActualizeHealth();
-                defeatGame dg = new defeatGame();
-                //dg.Quit();
-                c_UI.Lose(currentScore);
+                  
+               
+                    //defeatGame dg = new defeatGame();
+                    //dg.Quit();
+                    
+              
+                   
+               
             }
         }
     }
