@@ -224,9 +224,14 @@ public class BallPhysics : MonoBehaviour
                 ActualizeHealth();
                 defeatGame dg = new defeatGame();
                 //dg.Quit();
-                c_UI.Lose(currentScore);
+                Lose();
             }
         }
+    }
+
+    public void Lose()
+    {
+        c_UI.Lose(currentScore);
     }
     
     public void ActualizeScore()

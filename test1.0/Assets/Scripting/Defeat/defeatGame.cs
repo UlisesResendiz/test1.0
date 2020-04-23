@@ -23,7 +23,8 @@ public class defeatGame : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //aqui ponemos mas codigo para cuando pierde el jugador
-            Quit();
+            //Quit();
+            collision.gameObject.GetComponent<BallPhysics>().Lose();
         }
 
     }

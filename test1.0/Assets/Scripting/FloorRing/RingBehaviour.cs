@@ -202,6 +202,7 @@ public class RingBehaviour : MonoBehaviour
         GameObject particles = Instantiate(z_ParticleSystem);
         particles.transform.position = transform.position;
         particles.transform.rotation = transform.rotation;
+        particles.transform.localScale = transform.localScale;
     }
 }
 
