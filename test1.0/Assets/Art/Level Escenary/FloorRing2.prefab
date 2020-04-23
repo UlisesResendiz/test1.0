@@ -35,29 +35,29 @@ EdgeCollider2D:
   - {x: 11.868168, y: -3.4802303}
   - {x: 12.275706, y: -1.5742267}
   - {x: 12.347594, y: 0.53103805}
-  - {x: 12.1720495, y: 2.10297}
-  - {x: 11.771918, y: 3.6895149}
-  - {x: 11.065092, y: 5.5038824}
-  - {x: 10.166289, y: 7.0510607}
-  - {x: 8.764794, y: 8.730969}
-  - {x: 7.399437, y: 9.906317}
-  - {x: 6.140813, y: 10.749721}
-  - {x: 4.8911905, y: 11.378192}
-  - {x: 3.307553, y: 11.905612}
-  - {x: 1.454561, y: 12.312859}
-  - {x: -0.56900644, y: 12.363419}
-  - {x: -3.095251, y: 12.028418}
-  - {x: -4.984363, y: 11.3519745}
-  - {x: -6.616377, y: 10.458382}
-  - {x: -8.080533, y: 9.346289}
-  - {x: -9.174241, y: 8.305381}
-  - {x: -10.171549, y: 7.11712}
-  - {x: -10.90565, y: 5.923134}
-  - {x: -11.493594, y: 4.7087493}
-  - {x: -12.076377, y: 2.7927427}
-  - {x: -12.32326, y: 1.1568744}
-  - {x: -12.377302, y: -0.4642075}
-  - {x: -12.199156, y: -2.3994994}
+  - {x: 10.937692, y: 4.6020007}
+  - {x: 11.42516, y: 4.6614847}
+  - {x: 10.896778, y: 5.851121}
+  - {x: 9.94099, y: 7.2205434}
+  - {x: 8.950109, y: 8.568018}
+  - {x: 7.182249, y: 9.969536}
+  - {x: 4.4364476, y: 11.498024}
+  - {x: 2.6393042, y: 12.082153}
+  - {x: 0.5895647, y: 12.265354}
+  - {x: -0.89653134, y: 12.246452}
+  - {x: -2.5476627, y: 12.054143}
+  - {x: -3.9803915, y: 11.617111}
+  - {x: -5.2433, y: 11.120852}
+  - {x: -6.651848, y: 10.364348}
+  - {x: -7.543214, y: 9.738231}
+  - {x: -8.458199, y: 8.981284}
+  - {x: -9.399143, y: 8.013311}
+  - {x: -10.253901, y: 6.8678904}
+  - {x: -10.9261055, y: 5.512564}
+  - {x: -11.804798, y: 3.3391013}
+  - {x: -12.270454, y: 1.5391123}
+  - {x: -12.344964, y: -0.78230476}
+  - {x: -12.211195, y: -2.428203}
 --- !u!60 &2059616391
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -87,6 +87,35 @@ PolygonCollider2D:
       - {x: -0.8876171, y: -2.3866537}
       - {x: -0.31550312, y: -4.4484315}
       - {x: 0.7071228, y: -4.046802}
+--- !u!60 &3383196773440758046
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349082868404345047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 11.11, y: 4.35}
+      - {x: 11.54, y: 4.57}
+      - {x: 12.05, y: 2.58}
+      - {x: 11.8, y: 2.29}
 --- !u!114 &2059616386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49242bd40f32831449f78be102381654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temp: {x: 0, y: 0, z: 0}
   a_Props:
-    TimerDirection: 13
+    TimerDirection: 19
     Velocity: 0.2
 --- !u!1001 &7032664039746503134
 PrefabInstance:
@@ -122,7 +152,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
@@ -167,12 +197,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 80b06d55b55c3b642b54332a6816ce57,
         type: 3}
@@ -188,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 80b06d55b55c3b642b54332a6816ce57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b06d55b55c3b642b54332a6816ce57, type: 3}

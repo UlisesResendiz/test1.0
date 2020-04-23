@@ -28,6 +28,8 @@ public class RingBehaviour : MonoBehaviour
 
     [SerializeField]
     RingProps a_Props;
+    [SerializeField]
+    GameObject z_ParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +93,8 @@ public class RingBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            PlayParticleSystem();
+
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
@@ -162,6 +166,10 @@ public class RingBehaviour : MonoBehaviour
 
             Vector2[] colliderpoints;
             int numPoint = Random.Range(0, 42);
+            if (numPoint == 19)
+            {
+                numPoint = 20;
+            }
             colliderpoints = MyEdgeCollider2D.points;
             newChild.transform.localPosition = new Vector3(colliderpoints[numPoint].x, colliderpoints[numPoint].y, 0.0f);
 
@@ -187,6 +195,13 @@ public class RingBehaviour : MonoBehaviour
             newChild.AddComponent<Obstacle>();
         }
     
+    }
+
+    void PlayParticleSystem()
+    {
+        GameObject particles = Instantiate(z_ParticleSystem);
+        particles.transform.position = transform.position;
+        particles.transform.rotation = transform.rotation;
     }
 }
 

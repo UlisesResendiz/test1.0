@@ -212,6 +212,7 @@ public class UIHandler : MonoBehaviour
         {
             PlayerPrefs.SetInt("Highscore5", Score);
         }
+    }
 
     IEnumerator ResumeTimer(float Duration)
     {
