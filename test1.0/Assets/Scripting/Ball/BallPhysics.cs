@@ -23,10 +23,14 @@ public class BallPhysics : MonoBehaviour
     BallProps a_BallProps;
     bool a_CanJump;
     int a_DirMov;
-
+  
     private int currentScore;
 
     private int currentHealth;
+
+    //Camera 
+    public GameObject cameraEnd;
+    public GameObject cameraMain;
 
     public GameObject floor;
     private RingBehaviour rg_script;
@@ -46,22 +50,24 @@ public class BallPhysics : MonoBehaviour
     [Header("Lose Effect")]
     public ParticleSystem particleSystem;
     public MeshRenderer meshrender;
-    
+
     private void Awake()
     {
         a_BallPhysics = this;
+        cameraEnd = GameObject.Find("EndCamera");
+        cameraMain = GameObject.Find("Main Camera");
+
+        cameraEnd.SetActive(false);
+        cameraMain.SetActive(true);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         currentScore = 0;
-
         currentHealth = 2;
         ActualizeScore();
         ActualizeHealth();
-
 
         rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
 
@@ -76,7 +82,8 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
+
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
@@ -241,10 +248,15 @@ public class BallPhysics : MonoBehaviour
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
                 PlayAudio(Audio_ObstacleHit);
+
+                if(currentHealth == 0)
+                {
+                    cameraEnd.SetActive(true);
+                    cameraMain.SetActive(false);
+                }
             }
             else if (currentHealth == 0)
-            {
-
+            {             
                 particleSystem.Play();
                 ActualizeHealth();
                 meshrender.enabled = false;
