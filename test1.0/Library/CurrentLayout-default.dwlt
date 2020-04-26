@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 133
+  controlID: 142
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 66
+  controlID: 116
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 67
+  controlID: 117
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -437,20 +437,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Defeat
+    - Assets/Prefabs/Particles
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Defeat
+  - Assets/Prefabs/Particles
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Brayan\Unity\JuegoCircle\test1.0\test1.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 15}
-    m_SelectedIDs: 70a30000
-    m_LastClickedID: 41840
-    m_ExpandedIDs: 00000000dc3c0000de3c0000e23c0000e43c0000283d000000ca9a3b
+    scrollPos: {x: 0, y: 120}
+    m_SelectedIDs: 323b0000
+    m_LastClickedID: 15154
+    m_ExpandedIDs: 00000000f63a0000f83a0000fa3a0000fc3a0000fe3a00000c3b00000e3b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -478,7 +478,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000dc3c0000de3c0000e03c0000e23c0000e43c0000
+    m_ExpandedIDs: 00000000f63a0000f83a0000fa3a0000fc3a0000fe3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -506,7 +506,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300008839000000000000
+    m_ExpandedInstanceIDs: c62300008839000000000000a6570000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -603,21 +603,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5675ffffe078ffff0a8effff5ed2ffffdef8fffff4ffffff
+      m_ExpandedIDs: 6cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: RingParticles
-        m_OriginalName: RingParticles
+        m_Name: LevelHandler
+        m_OriginalName: LevelHandler
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -11682
+        m_UserData: 13934
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -663,9 +663,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.925431, y: -7.60779, z: -23.539062}
+    m_Target: {x: 5.025399, y: 10.011486, z: -5.3970065}
     speed: 2
-    m_Value: {x: 6.925431, y: -7.60779, z: -23.539062}
+    m_Value: {x: 5.025399, y: 10.011486, z: -5.3970065}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -715,9 +715,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 51.45248
+    m_Target: 15.787686
     speed: 2
-    m_Value: 51.45248
+    m_Value: 15.787686
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 447
-    width: 1005
-    height: 250
+    y: 622
+    width: 1413
+    height: 377
   m_ViewDataDictionary: {fileID: 0}

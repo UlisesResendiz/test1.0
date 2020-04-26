@@ -43,6 +43,10 @@ public class BallPhysics : MonoBehaviour
     [SerializeField]
     AudioClip Audio_Jump;
 
+    [Header("Effects")]
+    [SerializeField]
+    GameObject z_ParticlesRing;
+
     private void Awake()
     {
         a_BallPhysics = this;
@@ -207,6 +211,7 @@ public class BallPhysics : MonoBehaviour
             currentScore++;
             ActualizeScore();
             PlayAudio(Audio_RingCrossed);
+            PlayParticles();
         }
         //Colision obstaculo
         if (collision.gameObject.name == "obstacle")
@@ -247,5 +252,13 @@ public class BallPhysics : MonoBehaviour
     {
         a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
         a_AudioSource.PlayOneShot(clip);
+    }
+
+    void PlayParticles()
+    {
+        GameObject particles = Instantiate(z_ParticlesRing);
+        particles.transform.position = transform.position;
+        particles.transform.rotation = transform.rotation;
+        particles.transform.localScale = transform.localScale;
     }
 }
