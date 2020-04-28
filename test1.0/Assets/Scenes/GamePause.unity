@@ -1128,7 +1128,7 @@ PrefabInstance:
     - target: {fileID: 143985217748900847, guid: bdae53369a4c9944faa00e92369fa850,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 143985217748900847, guid: bdae53369a4c9944faa00e92369fa850,
         type: 3}
@@ -1654,6 +1654,16 @@ PrefabInstance:
       propertyPath: meshrender
       value: 
       objectReference: {fileID: 1992685537}
+    - target: {fileID: 8857008493696807587, guid: 9acea5ebc01cc99429f630db8e01cc2b,
+        type: 3}
+      propertyPath: Audio_End
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ce8f9c998a613242bc43b439cbccf1a, type: 3}
+    - target: {fileID: 8857008493696807587, guid: 9acea5ebc01cc99429f630db8e01cc2b,
+        type: 3}
+      propertyPath: Audio_Glitch
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b01ca709532e7e4d8c65763b9188070, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9acea5ebc01cc99429f630db8e01cc2b, type: 3}
 --- !u!1 &1098443250
@@ -12386,7 +12396,7 @@ PrefabInstance:
     - target: {fileID: 143985217748900847, guid: bdae53369a4c9944faa00e92369fa850,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 143985217748900847, guid: bdae53369a4c9944faa00e92369fa850,
         type: 3}

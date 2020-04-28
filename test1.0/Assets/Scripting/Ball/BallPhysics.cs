@@ -46,6 +46,10 @@ public class BallPhysics : MonoBehaviour
     AudioClip Audio_RingCrossed;
     [SerializeField]
     AudioClip Audio_Jump;
+    [SerializeField]
+    AudioClip Audio_End;
+    [SerializeField]
+    AudioClip Audio_Glitch;
 
     [Header("Lose Effect")]
     public ParticleSystem particleSystem;
@@ -77,13 +81,12 @@ public class BallPhysics : MonoBehaviour
         particleSystem = GetComponent<ParticleSystem>();
         particleSystem.Clear();
         particleSystem.Pause();
+
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
-
+    {       
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
@@ -94,6 +97,7 @@ public class BallPhysics : MonoBehaviour
             c_UI.Lose(currentScore);
             particleSystem.Clear();
             particleSystem.Pause();
+            StopAudio(Audio_Glitch);
         }
 
         if (!gameObject.GetComponent<ParticleSystem>().isPlaying)
@@ -253,19 +257,16 @@ public class BallPhysics : MonoBehaviour
                 {
                     cameraEnd.SetActive(true);
                     cameraMain.SetActive(false);
+                    PlayAudio(Audio_Glitch);
                 }
             }
             else if (currentHealth == 0)
-            {             
-                particleSystem.Play();
+            {
+                PlayAudio(Audio_End);               
+                particleSystem.Play();               
                 ActualizeHealth();
                 meshrender.enabled = false;
-                    //defeatGame dg = new defeatGame();
-                    //dg.Quit();
-                    
-              
-                   
-               
+
             }
         }
     }
@@ -284,5 +285,9 @@ public class BallPhysics : MonoBehaviour
     {
         a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
         a_AudioSource.PlayOneShot(clip);
+    }
+    void StopAudio(AudioClip clip)
+    {
+        a_AudioSource.Stop();
     }
 }
