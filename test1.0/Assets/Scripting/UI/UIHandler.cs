@@ -21,13 +21,14 @@ public class UIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         c_HighScoreText.text = PlayerPrefs.GetInt("Highscore1", 0).ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void MoveRightButton()
@@ -74,7 +75,7 @@ public class UIHandler : MonoBehaviour
         c_LosePanelScore.text = Score.ToString();
         saveScores(Score);
         c_LosePanel.GetComponent<Animator>().Play("Anim_LoseImageEnter");
-    }
+}
 
     public void Retry()
     {
@@ -114,7 +115,7 @@ public class UIHandler : MonoBehaviour
             StartCoroutine(ResumeTimer(1));
         }
 
-        
+
     }
 
 
@@ -141,7 +142,8 @@ public class UIHandler : MonoBehaviour
         if (c_TransitionPanel)
         {
             c_TransitionPanel.GetComponent<Animator>().Play("Anim_TransitionImageEnter");
-        }else
+        }
+        else
         {
             Debug.LogError("El gameobject Transition Panel no ha sido asignado en el inspector");
         }
@@ -215,8 +217,8 @@ public class UIHandler : MonoBehaviour
     }
 
     IEnumerator ResumeTimer(float Duration)
-    {
-        yield return new WaitForSecondsRealtime(Duration);
-        Time.timeScale = 1;
-    }
+        {
+            yield return new WaitForSecondsRealtime(Duration);
+            Time.timeScale = 1;
+        }
 }

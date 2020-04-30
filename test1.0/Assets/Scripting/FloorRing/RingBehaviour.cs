@@ -165,11 +165,7 @@ public class RingBehaviour : MonoBehaviour
             newChild.transform.parent = transform;
 
             Vector2[] colliderpoints;
-            int numPoint = Random.Range(0, 42);
-            if (numPoint == 19)
-            {
-                numPoint = 20;
-            }
+            int numPoint = Random.Range(5, 37);
             colliderpoints = MyEdgeCollider2D.points;
             newChild.transform.localPosition = new Vector3(colliderpoints[numPoint].x, colliderpoints[numPoint].y, 0.0f);
 

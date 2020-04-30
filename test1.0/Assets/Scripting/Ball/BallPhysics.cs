@@ -23,15 +23,19 @@ public class BallPhysics : MonoBehaviour
     BallProps a_BallProps;
     bool a_CanJump;
     int a_DirMov;
-
+  
     private int currentScore;
 
     private int currentHealth;
 
+    //Camera 
+    public GameObject cameraEnd;
+    public GameObject cameraMain;
+
     public GameObject floor;
     private RingBehaviour rg_script;
     Vector3 temp = new Vector3(0, 0, 0);
-    
+  
     [SerializeField]
     UIHandler c_UI;   //Referencia al script del UI
 
@@ -42,6 +46,14 @@ public class BallPhysics : MonoBehaviour
     AudioClip Audio_RingCrossed;
     [SerializeField]
     AudioClip Audio_Jump;
+    [SerializeField]
+    AudioClip Audio_End;
+    [SerializeField]
+    AudioClip Audio_Glitch;
+
+    [Header("Lose Effect")]
+    public ParticleSystem particleSystem;
+    public MeshRenderer meshrender;
 
     [Header("Effects")]
     [SerializeField]
@@ -50,34 +62,54 @@ public class BallPhysics : MonoBehaviour
     private void Awake()
     {
         a_BallPhysics = this;
+        cameraEnd = GameObject.Find("EndCamera");
+        cameraMain = GameObject.Find("Main Camera");
+
+        cameraEnd.SetActive(false);
+        cameraMain.SetActive(true);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         currentScore = 0;
-
         currentHealth = 2;
         ActualizeScore();
         ActualizeHealth();
-
 
         rg_script = GameObject.Find("FloorRing").GetComponent<RingBehaviour>();
 
         a_rb = GetComponent<Rigidbody2D>();
         a_AudioSource = GetComponent<AudioSource>();
+
+        particleSystem = GetComponent<ParticleSystem>();
+        particleSystem.Clear();
+        particleSystem.Pause();
+
     }
 
     // Update is called once per frame
     void Update()
-    {
-
-        KeyMapping();
+    {       
         Rotation();
         MobileMovement();
         temp = rg_script.temp;
         ScalingBall();
+
+        if (gameObject.GetComponent<ParticleSystem>().isStopped)
+        {
+            c_UI.Lose(currentScore);
+            particleSystem.Clear();
+            particleSystem.Pause();
+            StopAudio(Audio_Glitch);
+        }
+
+        if (!gameObject.GetComponent<ParticleSystem>().isPlaying)
+        {
+            KeyMapping();
+        }
+
+
     }
 
     void SetUp()
@@ -168,7 +200,9 @@ public class BallPhysics : MonoBehaviour
             float newforce = DisttoOrigin * 2;
 
             a_rb.AddForce(transform.up * newforce, ForceMode2D.Impulse);
+          
             PlayAudio(Audio_Jump);
+           
         }
     }
 
@@ -181,7 +215,7 @@ public class BallPhysics : MonoBehaviour
 
         float DisttoOrigin = Vector3.Distance(Vector3.zero, transform.position);
 
-        Debug.Log(DisttoOrigin);
+        //Debug.Log(DisttoOrigin);
 
         float newscale = DisttoOrigin / 13;
 
@@ -223,13 +257,24 @@ public class BallPhysics : MonoBehaviour
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
                 PlayAudio(Audio_ObstacleHit);
+
+                if(currentHealth == 0)
+                {
+                    cameraEnd.SetActive(true);
+                    cameraMain.SetActive(false);
+                    PlayAudio(Audio_Glitch);
+                }
             }
             else if (currentHealth == 0)
             {
+                PlayAudio(Audio_End);               
+                particleSystem.Play();               
                 ActualizeHealth();
-                defeatGame dg = new defeatGame();
+                //defeatGame dg = new defeatGame();
                 //dg.Quit();
                 Lose();
+                meshrender.enabled = false;
+
             }
         }
     }
@@ -248,6 +293,7 @@ public class BallPhysics : MonoBehaviour
         c_UI.ActualizeHealthText(currentHealth);
     }
 
+
     void PlayAudio(AudioClip clip)
     {
         a_AudioSource.volume = PlayerPrefs.GetFloat("effects", 0.0f);
@@ -260,5 +306,9 @@ public class BallPhysics : MonoBehaviour
         particles.transform.position = transform.position;
         particles.transform.rotation = transform.rotation;
         particles.transform.localScale = transform.localScale;
+    }
+    void StopAudio(AudioClip clip)
+    {
+        a_AudioSource.Stop();
     }
 }
