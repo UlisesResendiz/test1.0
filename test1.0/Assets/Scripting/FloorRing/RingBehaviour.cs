@@ -156,16 +156,30 @@ public class RingBehaviour : MonoBehaviour
 
     void createObstacles()
     {
+        generarObstaculosFor(4, 18);
+        generarObstaculosFor(25, 41);
+    }
+
+    void PlayParticleSystem()
+    {
+        GameObject particles = Instantiate(z_ParticleSystem);
+        particles.transform.position = transform.position;
+        particles.transform.rotation = transform.rotation;
+        particles.transform.localScale = transform.localScale;
+    }
+
+    void generarObstaculosFor(int x, int y)
+    {
         EdgeCollider2D MyEdgeCollider2D;
-        int numObstacles = Random.Range(1, 3);
-        for(int i = 0; i<numObstacles; i++)
+        int numObstacles = Random.Range(1, 2);
+        for (int i = 0; i < numObstacles; i++)
         {
             MyEdgeCollider2D = GetComponent<EdgeCollider2D>();
             GameObject newChild = new GameObject("obstacle");
             newChild.transform.parent = transform;
 
             Vector2[] colliderpoints;
-            int numPoint = Random.Range(5, 37);
+            int numPoint = Random.Range(x, y);
             colliderpoints = MyEdgeCollider2D.points;
             newChild.transform.localPosition = new Vector3(colliderpoints[numPoint].x, colliderpoints[numPoint].y, 0.0f);
 
@@ -175,7 +189,7 @@ public class RingBehaviour : MonoBehaviour
             newChild.transform.eulerAngles.z + 30
             );
 
-            Vector3 scaleChild = new Vector3(.75f,.75f,.75f);
+            Vector3 scaleChild = new Vector3(.75f, .75f, .75f);
             newChild.transform.localScale = scaleChild;
 
             MeshFilter meshfilter = newChild.AddComponent<MeshFilter>();
@@ -190,15 +204,6 @@ public class RingBehaviour : MonoBehaviour
             newChild.GetComponent<BoxCollider2D>().isTrigger = true;
             newChild.AddComponent<Obstacle>();
         }
-    
-    }
-
-    void PlayParticleSystem()
-    {
-        GameObject particles = Instantiate(z_ParticleSystem);
-        particles.transform.position = transform.position;
-        particles.transform.rotation = transform.rotation;
-        particles.transform.localScale = transform.localScale;
     }
 }
 

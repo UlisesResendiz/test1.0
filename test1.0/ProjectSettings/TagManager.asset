@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Audio
   - End Camera
+  - particleRing
   layers:
   - Default
   - TransparentFX

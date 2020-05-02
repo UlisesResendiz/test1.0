@@ -309,19 +309,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: m_Points.Array.data[20].x
-      value: 12.11237
+      value: 11.734375
       objectReference: {fileID: 0}
     - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: m_Points.Array.data[20].y
-      value: 2.5341022
+      value: 2.4651723
       objectReference: {fileID: 0}
     - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: m_Points.Array.data[21].x
-      value: 10.250328
+      value: 10.385704
       objectReference: {fileID: 0}
     - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: m_Points.Array.data[21].y
-      value: 1.5805223
+      value: 1.8401296
       objectReference: {fileID: 0}
     - target: {fileID: 2059616390, guid: c4264fc521ffd0d41ac699e5c99ce227, type: 3}
       propertyPath: m_Points.Array.data[22].x
@@ -587,6 +587,11 @@ PrefabInstance:
     - target: {fileID: 3383196773440758046, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383196773440758046, guid: c4264fc521ffd0d41ac699e5c99ce227,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8862429878086603841, guid: c4264fc521ffd0d41ac699e5c99ce227,
@@ -2003,7 +2008,7 @@ PrefabInstance:
     - target: {fileID: 4580405474971867575, guid: 9acea5ebc01cc99429f630db8e01cc2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4580405474971867575, guid: 9acea5ebc01cc99429f630db8e01cc2b,
         type: 3}
@@ -2056,9 +2061,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1208553357033510704, guid: 3614121965ef860479c66d7bc9846db9,
         type: 3}
-      propertyPath: particleSystem
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8857008493696807587, guid: 9acea5ebc01cc99429f630db8e01cc2b,
         type: 3}
       propertyPath: meshrender
@@ -7079,7 +7081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1132984509 stripped
 GameObject:
@@ -13026,6 +13028,11 @@ PrefabInstance:
     - target: {fileID: 3383196773440758046, guid: c4264fc521ffd0d41ac699e5c99ce227,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383196773440758046, guid: c4264fc521ffd0d41ac699e5c99ce227,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

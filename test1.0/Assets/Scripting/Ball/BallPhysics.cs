@@ -109,7 +109,6 @@ public class BallPhysics : MonoBehaviour
             KeyMapping();
         }
 
-
     }
 
     void SetUp()
