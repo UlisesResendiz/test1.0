@@ -29,13 +29,14 @@ public class BallPhysics : MonoBehaviour
     private int currentHealth;
 
     //Camera 
-    public GameObject cameraEnd;
-    public GameObject cameraMain;
+    GameObject cameraEnd;
+    GameObject cameraMain;
 
+    public GameObject canvasAux;
     public GameObject floor;
     private RingBehaviour rg_script;
     Vector3 temp = new Vector3(0, 0, 0);
-  
+    Canvas cL;
     [SerializeField]
     UIHandler c_UI;   //Referencia al script del UI
 
@@ -73,7 +74,7 @@ public class BallPhysics : MonoBehaviour
     void Start()
     {
         currentScore = 0;
-        currentHealth = 2;
+        currentHealth = 3;
         ActualizeScore();
         ActualizeHealth();
 
@@ -249,18 +250,24 @@ public class BallPhysics : MonoBehaviour
         //Colision obstaculo
         if (collision.gameObject.name == "obstacle")
         {
+            currentHealth--;
             if (currentHealth > 0)
-            {           
-                currentHealth--;
+            {
+               
                 ActualizeHealth();
                 //Podriamos añadir un pequeño efecto cuando colisiona con un obstaculo
                 Destroy(collision.gameObject);
                 PlayAudio(Audio_ObstacleHit);
 
-                if(currentHealth == 0)
+                if(currentHealth == 1)
                 {
                     cameraEnd.SetActive(true);
+
+                    cL = canvasAux.GetComponent<Canvas>();
+                    cL.worldCamera = cameraEnd.GetComponent<Camera>();
+
                     cameraMain.SetActive(false);
+               
                     PlayAudio(Audio_Glitch);
                 }
             }

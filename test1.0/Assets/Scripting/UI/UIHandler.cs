@@ -18,11 +18,18 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     Text c_HighScoreText;
 
+    public GameObject imgHeart1;
+    public GameObject imgHeart2;
+    public GameObject imgHeart3;
+
     // Start is called before the first frame update
     void Start()
     {
 
         c_HighScoreText.text = PlayerPrefs.GetInt("Highscore1", 0).ToString();
+        imgHeart1.SetActive(true);
+        imgHeart2.SetActive(true);
+        imgHeart3.SetActive(true);
     }
 
     // Update is called once per frame
@@ -124,6 +131,18 @@ public class UIHandler : MonoBehaviour
         if (c_HealthText)
         {
             c_HealthText.text = newHealth.ToString();
+            if(newHealth == 2)
+            {
+                imgHeart3.SetActive(false);
+            }
+            if (newHealth == 1)
+            {
+                imgHeart2.SetActive(false);
+            }
+            if (newHealth == 0)
+            {
+                imgHeart1.SetActive(false);
+            }
         }
         else
         {
