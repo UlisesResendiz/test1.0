@@ -47,13 +47,17 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlayAudioClipOneShoot(AudioClip clip)
     {
-
         a_AudioSource.PlayOneShot(clip);
     }
 
     public void GetThemeClip(AudioClip clip)
     {
         a_ThemeAudio = clip;
+
+        if (a_AudioSource != null)
+        {
+            PlayTheme();
+        }
     }
 
     void PlayTheme()
@@ -65,10 +69,14 @@ public class AudioPlayer : MonoBehaviour
 
     public void ProgresiveAudioChange(AudioClip clip1, AudioClip clip2)
     {
+        /*
         a_AudioSource.loop = false;
         a_AudioSource.clip = clip1;
         a_AudioSource.Play();
-        StartCoroutine(Transitionto2ndClip(clip2));
+        StartCoroutine(Transitionto2ndClip(clip2));*/
+
+        a_AudioSource.clip = clip2;
+        a_AudioSource.Play();
     }
 
     IEnumerator Transitionto2ndClip(AudioClip clip2)
@@ -83,4 +91,6 @@ public class AudioPlayer : MonoBehaviour
         a_AudioSource.Play();
 
     }
+
+
 }

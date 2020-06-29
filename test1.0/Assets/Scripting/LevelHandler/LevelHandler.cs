@@ -37,8 +37,6 @@ public class LevelHandler : MonoBehaviour
 
     void PlayTheme()
     {
-        AudioPlayer audplayer = AudioPlayer.GetAudioPlayer();
-
-        audplayer.GetThemeClip(Audio_Theme1);
+        AudioPlayer.GetAudioPlayer().GetThemeClip(Audio_Theme1);
     }
 }

@@ -248,8 +248,10 @@ public class BallPhysics : MonoBehaviour
             PlayParticles();
         }
         //Colision obstaculo
-        if (collision.gameObject.name == "obstacle")
+        if (collision.gameObject.tag == "Obstacle")
         {
+            collision.gameObject.GetComponent<Obstacle>().PlayParticles();
+
             if (currentHealth > 0)
             {           
                 currentHealth--;

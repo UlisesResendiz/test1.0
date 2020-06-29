@@ -17,6 +17,10 @@ public class UIHandler : MonoBehaviour
     Text c_LosePanelScore;
     [SerializeField]
     Text c_HighScoreText;
+    [SerializeField]
+    GameObject c_AdBackground;
+    [SerializeField]
+    Text c_PausePanelScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +99,7 @@ public class UIHandler : MonoBehaviour
         if (c_ScoreText)
         {
             c_ScoreText.text = newScore.ToString();
+            c_PausePanelScoreText.text = newScore.ToString();
         }
         else
         {
@@ -221,4 +226,9 @@ public class UIHandler : MonoBehaviour
             yield return new WaitForSecondsRealtime(Duration);
             Time.timeScale = 1;
         }
+
+    public void ActivateBackgroundAd()
+    {
+        c_AdBackground.SetActive(true);
+    }
 }

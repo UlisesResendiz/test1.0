@@ -9,6 +9,7 @@ public class RingBehaviour : MonoBehaviour
     {
         public float TimerDirection;
         public float Velocity;
+        public float velocityScale;
     }
 
     int a_Direction;
@@ -16,7 +17,7 @@ public class RingBehaviour : MonoBehaviour
     float scaleX;
     float scaleY;
     float scaleZ;
-    float velocityScale = .00000025f;
+    
     Transform a_Transform;
 
     GameObject floor;
@@ -30,6 +31,8 @@ public class RingBehaviour : MonoBehaviour
     RingProps a_Props;
     [SerializeField]
     GameObject z_ParticleSystem;
+    [SerializeField]
+    GameObject c_ObstaclesPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +64,7 @@ public class RingBehaviour : MonoBehaviour
             if (a_Timer > 0)
             {
                 a_Timer -= Time.deltaTime;
-                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + a_Direction * a_Props.Velocity);
+                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + a_Direction * a_Props.Velocity * Time.deltaTime);
                 a_Timer -= Time.deltaTime;
             }
             else
@@ -77,9 +80,9 @@ public class RingBehaviour : MonoBehaviour
         {
             Vector3 initialScale = a_Transform.localScale;
 
-            scaleX += velocityScale;
-            scaleY += velocityScale;
-            scaleZ += velocityScale;
+            scaleX += a_Props.velocityScale * Time.deltaTime;
+            scaleY += a_Props.velocityScale * Time.deltaTime;
+            scaleZ += a_Props.velocityScale * Time.deltaTime;
 
             initialScale.x += scaleX;
             initialScale.y += scaleY;
@@ -161,7 +164,7 @@ public class RingBehaviour : MonoBehaviour
         for(int i = 0; i<numObstacles; i++)
         {
             MyEdgeCollider2D = GetComponent<EdgeCollider2D>();
-            GameObject newChild = new GameObject("obstacle");
+            GameObject newChild = Instantiate(c_ObstaclesPrefab);
             newChild.transform.parent = transform;
 
             Vector2[] colliderpoints;
@@ -175,10 +178,12 @@ public class RingBehaviour : MonoBehaviour
             newChild.transform.eulerAngles.z + 30
             );
 
+            Vector3 pos = newChild.transform.position;
+
             Vector3 scaleChild = new Vector3(.75f,.75f,.75f);
             newChild.transform.localScale = scaleChild;
 
-            MeshFilter meshfilter = newChild.AddComponent<MeshFilter>();
+          /*  MeshFilter meshfilter = newChild.AddComponent<MeshFilter>();
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
             meshfilter.mesh = go.GetComponent<MeshFilter>().mesh;
             meshfilter.gameObject.AddComponent<MeshRenderer>();
@@ -188,10 +193,14 @@ public class RingBehaviour : MonoBehaviour
             newChild.AddComponent<MeshRenderer>();
 
             newChild.GetComponent<BoxCollider2D>().isTrigger = true;
-            newChild.AddComponent<Obstacle>();
+            newChild.AddComponent<Obstacle>();*/
+
+          
+
         }
     
     }
+    
 
     void PlayParticleSystem()
     {
